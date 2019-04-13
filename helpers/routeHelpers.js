@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 module.exports = {
-    validateBody = (schema) =>{
+    validateBody : (schema) =>{
         return (req, res, next) =>{
             const result = Joi.validate(req.body, schema);
             //404 에러 응답
@@ -18,8 +18,8 @@ module.exports = {
     },
 
     //스키마 세팅
-    schema: {
-        autoSchema: Joi.object().keys({
+    schemas: {
+        authSchema: Joi.object().keys({
             email: Joi.string().email().required(),
             password: Joi.string().required()
         })
